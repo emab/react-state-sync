@@ -15,7 +15,7 @@ export const useSyncedState = <T>(
     const broadcast = useRef<BroadcastChannel>();
 
     useEffect(() => {
-        broadcast.current = new BroadcastChannel(key);
+        broadcast.current = new BroadcastChannel(`react-state-sync-${key}`);
 
         return () => {
             broadcast.current?.close();
