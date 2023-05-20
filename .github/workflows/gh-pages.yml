@@ -38,7 +38,7 @@ jobs:
         with:
           working-directory: 'react-state-sync-demo'
       - name: Build with Vite
-        run: cd react-state-sync-demo && vite build
+        run: cd react-state-sync-demo && npx vite build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
