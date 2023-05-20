@@ -17,7 +17,7 @@ const incrementCountAsync = (): Promise<number> => {
     });
 };
 
-export const AsyncComponent = () => {
+export const AsyncCounter = () => {
     const [count, _, setCountOptimistically] = useSyncedState("asyncCount", 0);
     const [fetching, setFetching] = useState(false);
     const [error, setError] = useState<string>();
@@ -49,6 +49,7 @@ export const AsyncComponent = () => {
                 fontSize: "2em",
                 textAlign: "center",
                 userSelect: "none",
+                cursor: "pointer",
             }}
         >
             <button onClick={getResults}>Get Results</button>

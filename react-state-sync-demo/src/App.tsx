@@ -1,5 +1,5 @@
 import { Counter } from "./Counter.tsx";
-import { AsyncComponent } from "./AsyncComponent.tsx";
+import { AsyncCounter } from "./AsyncCounter.tsx";
 
 function App() {
 	return (
@@ -14,9 +14,9 @@ function App() {
 				<Counter />
 				<Counter />
 				<Counter />
-				<AsyncComponent />
-				<AsyncComponent />
-				<AsyncComponent />
+				<AsyncCounter />
+				<AsyncCounter />
+				<AsyncCounter />
 			</div>
 		</>
 	);

@@ -11,6 +11,7 @@ export const Counter = () => {
                 fontSize: "2em",
                 textAlign: "center",
                 userSelect: "none",
+                cursor: "pointer",
             }}
             onClick={() => setCount(count + 1)}
         >
