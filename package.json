@@ -1,9 +1,13 @@
 {
-  "name": "react-state-sync",
+  "name": "@emab/react-state-sync",
   "version": "0.1.0",
   "type": "module",
   "exports": "./src/index.ts",
   "license": "MIT",
+  "homepage": "https://github.com/emab/react-state-sync",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
