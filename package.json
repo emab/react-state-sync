@@ -1,0 +1,28 @@
+{
+  "name": "react-state-sync",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": "./src/index.ts",
+  "license": "MIT",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md",
+    "LICENSE.md"
+  ],
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "react": "^18.2.0",
+    "typescript": "^5.0.4",
+    "vite": "^4.3.2",
+    "vite-plugin-dts": "^2.3.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2"
+  }
+}
