@@ -70,6 +70,22 @@ const handleOptimisticUpdate = async (newValue) => {
 };
 ```
 
+You can also provide a new value to `syncValue` once the response is complete:
+
+```jsx
+const handleOptimisticUpdate = async (newValue) => {
+    const { rollbackValue, syncValue } = optimisticUpdate(newValue);
+
+    try {
+        // Replace this with your actual API request or some operation that could fail
+        const response = await fakeApiRequest();
+        syncValue(response.data); // sync the new value across tabs
+    } catch (error) {
+        rollbackValue(); // rollback to the old value in case of failure
+    }
+};
+```
+
 ## Compatibility
 
 This hook requires a browser environment that supports the [BroadcastChannel API](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API). Make sure to check its compatibility if you're targeting older browsers.
