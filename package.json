@@ -8,6 +8,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "types": "./dist/index.d.ts",
   "scripts": {
     "prepublishOnly": "vite build",
     "dev": "vite",
