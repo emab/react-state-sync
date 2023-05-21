@@ -10,7 +10,7 @@ type TOptimisticUpdateFunction<T> = (value: T) => {
 export const useSyncedState = <T>(
     key: string,
     initialValue: T
-): [T, TVoidFunction<T>, TOptimisticUpdateFunction<T>] => {
+): [value: T, syncValue: TVoidFunction<T>, updateValueOptimistically: TOptimisticUpdateFunction<T>] => {
     const [value, setValue_internal] = useState(initialValue);
     const broadcast = useRef<BroadcastChannel>();
 

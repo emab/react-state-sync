@@ -1,7 +1,7 @@
 import {useSyncedState} from "react-state-sync";
 
 export const Counter = () => {
-    const [count, setCount] = useSyncedState("count", 0);
+    const [count, syncCount] = useSyncedState("count", 0);
     return (
         <div
             style={{
@@ -13,7 +13,7 @@ export const Counter = () => {
                 userSelect: "none",
                 cursor: "pointer",
             }}
-            onClick={() => setCount(count + 1)}
+            onClick={() => syncCount(count + 1)}
         >
             <p>Count: {count}</p>
         </div>

@@ -18,7 +18,7 @@ const incrementCountAsync = (): Promise<number> => {
 };
 
 export const AsyncCounter = () => {
-    const [count, _, setCountOptimistically] = useSyncedState("asyncCount", 0);
+    const [count, _, updateCountOptimistically] = useSyncedState("asyncCount", 0);
     const [fetching, setFetching] = useState(false);
     const [error, setError] = useState<string>();
 
@@ -28,7 +28,7 @@ export const AsyncCounter = () => {
         }
         setFetching(true);
         setError(undefined);
-        const {syncValue, rollbackValue} = setCountOptimistically(count + 1);
+        const {syncValue, rollbackValue} = updateCountOptimistically(count + 1);
         try {
             const count = await incrementCountAsync();
             syncValue(count * 10);

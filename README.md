@@ -40,7 +40,7 @@ import {useSyncedState} from "react-state-sync";
 Then call the hook in your functional component:
 
 ```jsx
-const [state, setState, optimisticUpdate] = useSyncedState("stateKey", initialValue);
+const [value, syncValue, updateValueOptimistically] = useSyncedState("stateKey", initialValue);
 ```
 
 ### Parameters:
@@ -50,26 +50,26 @@ const [state, setState, optimisticUpdate] = useSyncedState("stateKey", initialVa
 
 ### Return Values:
 
-- `state` (T): The current state value.
-- `setState` (TVoidFunction<T>): Function to set the state. This will also broadcast the new state to other
+- `value` (T): The current state value.
+- `syncValue` (TVoidFunction<T>): Function to sync the state. This will also broadcast the new state to other
   tabs/windows.
-- `optimisticUpdate` (TOptimisticUpdateFunction<T>): Function that updates the state optimistically, returning an object
+- `updateOptimistically` (TOptimisticUpdateFunction<T>): Function that updates the state optimistically, returning an object
   with `rollbackValue` and `syncValue` functions.
 
-## Using `setState`:
+## Using `setValue`:
 
-To update the state and broadcast the new state to other tabs/windows, call `setState`:
+To update the state value and broadcast the new state to other tabs/windows, call `setValue`:
 
 ```jsx
-setState(newValue);
+setValue(newValue);
 ```
 
-## Using `optimisticUpdate`:
+## Using `updateValueOptimistically`:
 
-To perform an optimistic update, call `optimisticUpdate`:
+To perform an optimistic update, call `updateValueOptimistically`:
 
 ```jsx
-const {rollbackValue, syncValue} = optimisticUpdate(newValue);
+const {rollbackValue, syncValue} = updateValueOptimistically(newValue);
 ```
 
 This function will immediately update the state and return two functions:
@@ -83,7 +83,7 @@ For example:
 
 ```jsx
 const handleOptimisticUpdate = async (newValue) => {
-    const {rollbackValue, syncValue} = optimisticUpdate(newValue);
+    const {rollbackValue, syncValue} = updateValueOptimistically(newValue);
 
     try {
         // Replace this with your actual API request or some operation that could fail
@@ -99,7 +99,7 @@ You can also provide a new value to `syncValue` once the response is complete:
 
 ```jsx
 const handleOptimisticUpdate = async (newValue) => {
-    const {rollbackValue, syncValue} = optimisticUpdate(newValue);
+    const {rollbackValue, syncValue} = updateValueOptimistically(newValue);
 
     try {
         // Replace this with your actual API request or some operation that could fail
