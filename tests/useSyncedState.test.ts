@@ -1,24 +1,11 @@
 import {act, renderHook} from "@testing-library/react";
 import {useSyncedState} from "../src";
-import {vi, test, expect, afterAll, Mock} from "vitest";
+import {vi, test, expect, afterAll, beforeAll} from "vitest";
+import {mockBroadcastChannel} from "vitest-broadcast-channel-mock"
 
-const mockChannels = new Map<string, Record<string, Mock>>();
-
-vi.stubGlobal("BroadcastChannel", vi.fn((key: string) => {
-    const channel = mockChannels.get(key) ?? {
-        postMessage: vi.fn(),
-        close: vi.fn(),
-        addEventListener: vi.fn(),
-        removeEventListener: vi.fn(),
-    };
-    channel.postMessage.mockImplementation((message: unknown) => {
-        channel.addEventListener.mock.calls.forEach((call) => {
-            call[1]({data: message});
-        });
-    })
-    mockChannels.set(key, channel);
-    return channel;
-}));
+beforeAll(() => {
+    mockBroadcastChannel();
+})
 
 afterAll(() => {
     vi.restoreAllMocks()

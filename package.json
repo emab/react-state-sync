@@ -31,7 +31,8 @@
     "typescript": "^5.0.4",
     "vite": "^4.3.2",
     "vite-plugin-dts": "^2.3.0",
-    "vitest": "^0.31.1"
+    "vitest": "^0.31.1",
+    "vitest-broadcast-channel-mock": "^0.1.0"
   },
   "peerDependencies": {
     "react": "^17.0.2"
