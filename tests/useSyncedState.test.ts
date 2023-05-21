@@ -1,5 +1,5 @@
 import {act, renderHook} from "@testing-library/react";
-import {useSyncedState} from "./useSyncedState";
+import {useSyncedState} from "../src";
 import {vi, test, expect, afterAll, Mock} from "vitest";
 
 const mockChannels = new Map<string, Record<string, Mock>>();
