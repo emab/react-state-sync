@@ -1,8 +1,10 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vitest/config";
 import dts from 'vite-plugin-dts'
 
-// https://vitejs.dev/config/
 export default defineConfig({
+    test: {
+        environment: "happy-dom",
+    },
     plugins: [dts()],
     build: {
         lib: {

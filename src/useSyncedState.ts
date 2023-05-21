@@ -45,7 +45,10 @@ export const useSyncedState = <T>(
 
         return {
             rollbackValue: () => setValue_internal(oldValue),
-            syncValue: (newerValue?: T) => syncValue(newerValue ?? newValue),
+            syncValue: (newerValue?: T) => {
+                newerValue && setValue_internal(newerValue);
+                syncValue(newerValue ?? newValue)
+            },
         };
     }, [value, syncValue, key, initialValue, broadcast]);
 
