@@ -19,14 +19,18 @@
     "dist",
     "src",
     "README.md",
-    "LICENSE.md"
+    "LICENSE.md",
+    "CHANGELOG.md"
   ],
   "devDependencies": {
+    "@testing-library/react": "^14.0.0",
     "@types/react": "^18.2.6",
+    "happy-dom": "^9.19.2",
     "react": "^18.2.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.2",
-    "vite-plugin-dts": "^2.3.0"
+    "vite-plugin-dts": "^2.3.0",
+    "vitest": "^0.31.1"
   },
   "peerDependencies": {
     "react": "^17.0.2"
