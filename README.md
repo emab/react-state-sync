@@ -1,6 +1,6 @@
 # React State Sync - simple state syncing in React
 
-![npm (scoped)](https://img.shields.io/npm/v/@emab/react-state-sync?style=flat-square) ![npm](https://img.shields.io/npm/dw/@emab/react-state-sync?style=flat-square) ![GitHub](https://img.shields.io/github/license/emab/react-state-sync?style=flat-square)
+![npm (scoped)](https://img.shields.io/npm/v/@emab/react-state-sync?style=flat-square) ![npm](https://img.shields.io/npm/dw/@emab/react-state-sync?style=flat-square) ![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/emab/react-state-sync/test.yml?label=tests&style=flat-square) ![GitHub](https://img.shields.io/github/license/emab/react-state-sync?style=flat-square)
 
 This package provides a simple way to share state across:
 
