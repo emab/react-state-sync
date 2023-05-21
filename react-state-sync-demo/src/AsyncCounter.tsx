@@ -31,7 +31,7 @@ export const AsyncCounter = () => {
         const {syncValue, rollbackValue} = updateCountOptimistically(count + 1);
         try {
             const count = await incrementCountAsync();
-            syncValue(count * 10);
+            syncValue(count);
         } catch (e) {
             setError(String(e));
             rollbackValue();
