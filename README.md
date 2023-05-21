@@ -116,3 +116,15 @@ const handleOptimisticUpdate = async (newValue) => {
 This hook requires a browser environment that supports
 the [BroadcastChannel API](https://developer.mozilla.org/en-US/docs/Web/API/Broadcast_Channel_API). Make sure to check
 its compatibility if you're targeting older browsers.
+
+## License
+
+This project is open sourced under the MIT License.
+
+## Contribution
+
+Contributions are welcome! Please open an issue if you find a bug or have a feature request. You can also propose changes via a pull request.
+
+## Author
+
+Eddy Brown - [GitHub](https://github.com/emab)
