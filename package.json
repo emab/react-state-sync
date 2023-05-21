@@ -1,6 +1,6 @@
 {
   "name": "@emab/react-state-sync",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "type": "module",
   "exports": "./src/index.ts",
   "license": "MIT",
