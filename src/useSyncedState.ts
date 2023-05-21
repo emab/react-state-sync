@@ -7,15 +7,15 @@ type TOptimisticUpdateFunction<T> = (value: T) => {
     syncValue: OptionalTVoidFunction<T>;
 };
 
-export const useSyncedState = <T>(
-    key: string,
+export const useSyncedState = <State extends Record<string, unknown>, K extends keyof State = keyof State, T = State[K]>(
+    key: K,
     initialValue: T
 ): [value: T, syncValue: TVoidFunction<T>, updateValueOptimistically: TOptimisticUpdateFunction<T>] => {
     const [value, setValue_internal] = useState(initialValue);
     const broadcast = useRef<BroadcastChannel>();
 
     useEffect(() => {
-        broadcast.current = new BroadcastChannel(`react-state-sync-${key}`);
+        broadcast.current = new BroadcastChannel(`react-state-sync-${String(key)}`);
 
         return () => {
             broadcast.current?.close();

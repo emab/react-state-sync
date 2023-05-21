@@ -24,8 +24,14 @@ afterAll(() => {
     vi.restoreAllMocks()
 })
 
+type State = {
+    test: number;
+    test1: number;
+    test2: number;
+}
+
 test("should broadcast a value when syncValue is called", () => {
-    const {result} = renderHook(() => useSyncedState('test', 0));
+    const {result} = renderHook(() => useSyncedState<State>('test', 0));
 
     expect(result.current[0]).toBe(0);
 
@@ -37,7 +43,7 @@ test("should broadcast a value when syncValue is called", () => {
 });
 
 test("should rollback a value when rollbackValue is called", () => {
-    const {result} = renderHook(() => useSyncedState('test', 0));
+    const {result} = renderHook(() => useSyncedState<State>('test', 0));
 
     expect(result.current[0]).toBe(0);
 
@@ -62,7 +68,7 @@ test("should rollback a value when rollbackValue is called", () => {
 });
 
 test("should sync a value when syncValue is called", () => {
-    const {result} = renderHook(() => useSyncedState('test', 0));
+    const {result} = renderHook(() => useSyncedState<State>('test', 0));
 
     expect(result.current[0]).toBe(0);
 
@@ -87,7 +93,7 @@ test("should sync a value when syncValue is called", () => {
 });
 
 test("should sync a value when syncValue is called with a value", () => {
-    const {result} = renderHook(() => useSyncedState('test', 0));
+    const {result} = renderHook(() => useSyncedState<State>('test', 0));
 
     expect(result.current[0]).toBe(0);
 
@@ -112,8 +118,8 @@ test("should sync a value when syncValue is called with a value", () => {
 });
 
 test("should sync between multiple hook instances", () => {
-    const {result: result1} = renderHook(() => useSyncedState('test', 0));
-    const {result: result2} = renderHook(() => useSyncedState('test', 0));
+    const {result: result1} = renderHook(() => useSyncedState<State>('test', 0));
+    const {result: result2} = renderHook(() => useSyncedState<State>('test', 0));
 
     expect(result1.current[0]).toBe(0);
     expect(result2.current[0]).toBe(0);
@@ -127,8 +133,8 @@ test("should sync between multiple hook instances", () => {
 });
 
 test("should support multiple keys", () => {
-    const {result: result1} = renderHook(() => useSyncedState('test1', 0));
-    const {result: result2} = renderHook(() => useSyncedState('test2', 0));
+    const {result: result1} = renderHook(() => useSyncedState<State>('test1', 0));
+    const {result: result2} = renderHook(() => useSyncedState<State>('test2', 0));
 
     expect(result1.current[0]).toBe(0);
     expect(result2.current[0]).toBe(0);
