@@ -43,6 +43,16 @@ Then call the hook in your functional component:
 const [value, syncValue, updateValueOptimistically] = useSyncedState("stateKey", initialValue);
 ```
 
+You can provide a `State` type which will be used to type the `value` returned by the hook:
+
+```tsx
+type State = {
+  count: number;
+};
+
+const [value, syncValue, updateValueOptimistically] = useSyncedState<State>("count", 0);
+```
+
 ### Parameters:
 
 - `stateKey` (string): A unique key that identifies the state to be synced across multiple tabs or windows.
