@@ -26,21 +26,6 @@ export const useSyncedState = <T>(
         broadcast.current?.postMessage(valueToSync);
     }, [key, broadcast]);
 
-    useEffect(() => {
-        const onSyncState = (event: CustomEvent) => {
-            const syncData = event.detail;
-            if (syncData.key === key) {
-                setValue_internal(syncData.value);
-            }
-        };
-
-        document.addEventListener("sync-state", onSyncState);
-
-        return () => {
-            document.removeEventListener("sync-state", onSyncState);
-        };
-    }, [key]);
-
     // Listen for messages on the broadcast channel and update the state
     useEffect(() => {
         const handleMessage = (event: MessageEvent) => {
