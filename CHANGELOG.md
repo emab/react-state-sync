@@ -1,3 +1,7 @@
+# 0.1.6
+
+Uses package to mock `BroadcastChannel`, updated README.
+
 # 0.1.5
 
 Added a type parameter to the hook which allows you to define the type of each key value.
