@@ -6,10 +6,18 @@ type TOptimisticUpdateFunction<T> = (value: T) => {
     rollbackValue: VoidFunction;
     syncValue: OptionalTVoidFunction<T>;
 };
+type Options = {
+    /**
+     * If true, the initial value will be synced on mount
+     */
+    syncOnMount?: boolean;
+
+}
 
 export const useSyncedState = <State extends Record<string, unknown>, K extends keyof State = keyof State, T = State[K]>(
     key: K,
-    initialValue: T
+    initialValue: T,
+    {syncOnMount = false}: Options = {},
 ): [value: T, syncValue: TVoidFunction<T>, updateValueOptimistically: TOptimisticUpdateFunction<T>] => {
     const [value, setValue_internal] = useState(initialValue);
     const broadcast = useRef<BroadcastChannel>();
@@ -17,10 +25,14 @@ export const useSyncedState = <State extends Record<string, unknown>, K extends 
     useEffect(() => {
         broadcast.current = new BroadcastChannel(`react-state-sync-${String(key)}`);
 
+        if (syncOnMount) {
+            broadcast.current.postMessage(initialValue);
+        }
+
         return () => {
             broadcast.current?.close();
         }
-    }, [key]);
+    }, [key, syncOnMount]);
 
     const syncValue = useCallback((valueToSync: T) => {
         broadcast.current?.postMessage(valueToSync);

@@ -25,7 +25,7 @@ functionality is used to rollback the state if the operation fails. If the opera
 synced across the two apps.
 
 You can also open the site in multiple tabs - if a change is made in one tab its values will be synced across the other
-tabs. 
+tabs.
 
 **Note: one tab will override the values in another if it is opened and a new value is broadcast.**
 
@@ -47,7 +47,7 @@ You can provide a `State` type which will be used to type the `value` returned b
 
 ```tsx
 type State = {
-  count: number;
+    count: number;
 };
 
 const [value, syncValue, updateValueOptimistically] = useSyncedState<State>("count", 0);
@@ -57,21 +57,23 @@ const [value, syncValue, updateValueOptimistically] = useSyncedState<State>("cou
 
 - `stateKey` (string): A unique key that identifies the state to be synced across multiple tabs or windows.
 - `initialValue` (T): The initial value for the state.
+- `options`: (Options): An optional object containing options for the hook.
 
 ### Return Values:
 
 - `value` (T): The current state value.
 - `syncValue` (TVoidFunction<T>): Function to sync the state. This will also broadcast the new state to other
   tabs/windows.
-- `updateOptimistically` (TOptimisticUpdateFunction<T>): Function that updates the state optimistically, returning an object
+- `updateValueOptimistically` (TOptimisticUpdateFunction<T>): Function that updates the state optimistically, returning
+  an object
   with `rollbackValue` and `syncValue` functions.
 
-## Using `setValue`:
+## Using `syncValue`:
 
-To update the state value and broadcast the new state to other tabs/windows, call `setValue`:
+To update the state value and broadcast the new state to other tabs/windows, call `syncValue`:
 
 ```jsx
-setValue(newValue);
+syncValue(newValue);
 ```
 
 ## Using `updateValueOptimistically`:
@@ -121,6 +123,12 @@ const handleOptimisticUpdate = async (newValue) => {
 };
 ```
 
+## Options
+
+The `useSyncedState` hook accepts an optional `Options` object as its third parameter. The following options are available:
+
+- `syncOnMount` (boolean): Whether to sync the initial value on mount. Defaults to `false`.
+
 ## Compatibility
 
 This hook requires a browser environment that supports
@@ -133,7 +141,8 @@ This project is open sourced under the MIT License.
 
 ## Contribution
 
-Contributions are welcome! Please open an issue if you find a bug or have a feature request. You can also propose changes via a pull request.
+Contributions are welcome! Please open an issue if you find a bug or have a feature request. You can also propose
+changes via a pull request.
 
 ## Author
 

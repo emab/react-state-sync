@@ -141,3 +141,40 @@ test("should support multiple keys", () => {
     expect(result1.current[0]).toBe(1);
     expect(result2.current[0]).toBe(2);
 });
+
+test("does not broadcast initial value by default", () => {
+    const {result: result1} = renderHook(() => useSyncedState<State>('test1', 0));
+
+    expect(result1.current[0]).toBe(0);
+
+    act(() => {
+        result1.current[1](1);
+    });
+
+    expect(result1.current[0]).toBe(1);
+
+    const {result: result2} = renderHook(() => useSyncedState<State>('test1', 0));
+
+    expect(result1.current[0]).toBe(1);
+    expect(result2.current[0]).toBe(0);
+})
+
+test("syncs initial value on mount if syncOnMount is true", () => {
+    const {result: result1} = renderHook(() => useSyncedState<State>('test1', 0));
+
+    expect(result1.current[0]).toBe(0);
+
+    act(() => {
+        result1.current[1](1);
+    });
+
+    expect(result1.current[0]).toBe(1);
+
+    let result2: ReturnType<typeof renderHook>;
+    act(() => {
+        result2 = renderHook(() => useSyncedState<State>('test1', 0, {syncOnMount: true}));
+    });
+
+    expect(result1.current[0]).toBe(0);
+    expect(result2.result.current[0]).toBe(0);
+});
