@@ -1,3 +1,8 @@
+# 0.1.7
+
+- Adds `options` parameter to `useSyncedState` hook.
+  - Has one option, `syncOnMount` which defaults to `false`. 
+
 # 0.1.6
 
 Uses package to mock `BroadcastChannel`, updated README.
